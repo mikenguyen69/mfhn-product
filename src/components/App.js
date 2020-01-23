@@ -21,10 +21,9 @@ class App extends React.Component {
   }
 
   render() {
-    const {      
-      error,
-    } = this.state;
-
+    const { error } = this.state;
+    const { user } = this.props;
+    
     if (error) {
       return (
         <div>
@@ -35,8 +34,8 @@ class App extends React.Component {
 
     return (
       <Router history={this.props.history || defaultHistory}>
-          <FirebaseContext.Provider value={{firebase}}>
-            <Route exact path="/" render={(() => <Redirect to="/create" /> )} /> 
+          <FirebaseContext.Provider value={{user, firebase}}>
+            <Route exact path="/" render={() => <Redirect to="/create" /> } /> 
             <Route exact path="/create" component={CreateLink} /> 
             <Route exact path="/link/:linkId" component={LinkDetail} /> 
           </FirebaseContext.Provider>        

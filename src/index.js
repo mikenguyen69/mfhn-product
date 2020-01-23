@@ -5,9 +5,10 @@ import App from './components/App';
 import { unregister } from './registerServiceWorker';
 import './styles/index.css';
 
-window.renderLink = (containerId, history) => {
-  ReactDOM.render(
-    <App history={history} />,
+window.renderLink = (containerId, history, user) => {
+
+  ReactDOM.render(    
+    <App history={history} user={user} />,
     document.getElementById(containerId),
   );
   unregister();

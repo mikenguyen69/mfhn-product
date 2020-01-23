@@ -14,8 +14,7 @@ function CreateLink(props) {
     useFormValidation(INITIAL_STATE, validateCreateLink, submitLink) 
   const [firebaseError, setFirebaseError] = React.useState(null);
 
-  async function submitLink() {
-    
+  async function submitLink() {    
     try {
       if (!user) {
         props.history.push("/login");
