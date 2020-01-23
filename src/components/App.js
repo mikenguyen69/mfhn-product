@@ -1,6 +1,9 @@
 import React from 'react';
-import { Router } from 'react-router-dom';
+import { Router, Route, Redirect } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
+import LinkDetail from './Link/LinkDetail';
+import firebase, {FirebaseContext} from "../firebase";
+import CreateLink from './Link/CreateLink';
 
 const defaultHistory = createBrowserHistory();
 
@@ -32,9 +35,11 @@ class App extends React.Component {
 
     return (
       <Router history={this.props.history || defaultHistory}>
-        <div>
-          <div>Hello Links and Comments at localhost:3002 !</div>
-        </div>
+          <FirebaseContext.Provider value={{firebase}}>
+            <Route exact path="/" render={(() => <Redirect to="/create" /> )} /> 
+            <Route exact path="/create" component={CreateLink} /> 
+            <Route exact path="/link/:linkId" component={LinkDetail} /> 
+          </FirebaseContext.Provider>        
       </Router>
     );
   }
