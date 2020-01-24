@@ -11,10 +11,10 @@ function LinkDetail(props) {
   const [commentText, setCommentText] = React.useState("");
 
   React.useEffect(() => {
-    getLinks()
+    getLink()
   }, [])
 
-  function getLinks() {
+  function getLink() {
     const linkRef = firebase.db.collection("links").doc(linkId);
     linkRef.get().then(doc => {
       setLink({ ...doc.data(), id: doc.id});
