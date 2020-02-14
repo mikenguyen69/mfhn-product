@@ -27,7 +27,7 @@ class App extends React.Component {
     if (error) {
       return (
         <div>
-          Sorry, but the restaurant list is unavailable right now
+          Sorry, but the hook news list is unavailable right now
         </div>
       );
     }
